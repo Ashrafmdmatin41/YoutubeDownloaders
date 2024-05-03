@@ -15,7 +15,7 @@ def download_playlist(url:str, quality:int):
         video.register_on_complete_callback(complete_status)
 
         try:
-            stream:pytube.Stream = video.streams.filter(res=f"{quality}p")[0]
+            stream:pytube.Stream = video.streams.filter(res=f"{quality}p", progressive=True)[0]
         except IndexError as ie:
             print(f"Resolution: {quality}p not available!. Try other resolutions")
         if stream:
@@ -30,7 +30,7 @@ def download_video(url:str, quality:int):
         )
 
     try:
-        stream:pytube.Stream = video.streams.filter(res=f"{quality}p")[0]
+        stream:pytube.Stream = video.streams.filter(res=f"{quality}p", progressive=True)[0]
     except IndexError as ie:
         print(f"Resolution: {quality}p not available!. Try other resolutions")
     if stream:
