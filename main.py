@@ -40,7 +40,7 @@ def download_video(url:str, quality:int):
 if __name__ == "__main__":
     while True:
         print("\n****** Youtube Downloader ******")
-        print("1.Youtube Video 2.Youtube Playlist 3.Exit")
+        print("1.Download Video\n2.Download Playlist\n3.Exit")
         choice = int(input(": "))
         if choice == 1:
             link = input("Enter video url : ")

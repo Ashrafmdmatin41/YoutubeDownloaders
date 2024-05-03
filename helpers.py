@@ -3,7 +3,7 @@ import pytube
 def progress_bar(stream, chunk, bytes_remaining):
     current = ((stream.filesize - bytes_remaining)/stream.filesize)
     percent = ('{0:.2f}').format(current*100)
-    bar_length = 40
+    bar_length = 20
     progress = int(bar_length*current)
     status = '█' * progress + '-' * (bar_length - progress)
     print(f"Downloading: {status} {percent} %", flush=True)
