@@ -11,8 +11,8 @@ def download_playlist(url:str, quality:int):
     download_path = os.path.join(os.getcwd(), "downloads", playlist_name)
 
     for video in plist.videos:
-        video.register_on_progress_callback(lambda stream, chunk, bytes_remaining  : progress_bar(stream, chunk, bytes_remaining))
-        video.register_on_complete_callback(lambda stream, file_path : complete_status(stream, file_path))
+        video.register_on_progress_callback(progress_bar)
+        video.register_on_complete_callback(complete_status)
 
         try:
             stream:pytube.Stream = video.streams.filter(res=f"{quality}p")[0]
@@ -25,8 +25,8 @@ def download_video(url:str, quality:int):
     download_path = os.path.join(os.getcwd(), "downloads")
     video = YouTube(
         url=url,
-        on_progress_callback=lambda stream, chunk, bytes_remaining  : progress_bar(stream, chunk, bytes_remaining),
-        on_complete_callback=lambda stream, file_path : complete_status(stream, file_path)
+        on_progress_callback=progress_bar,
+        on_complete_callback=complete_status,
         )
 
     try:
